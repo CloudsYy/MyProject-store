@@ -1,0 +1,28 @@
+# port of datasource
+server:
+  port: 8888
+
+
+#the configuration of datasource
+spring:
+  datasource:
+    username: root
+    password: coiot_mes
+    url: jdbc:mysql://120.79.75.136:3306/student?zeroDateTimeBehavior=convertToNull&characterEncoding=utf-8&allowMultiQueries=true
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+      max-active: 100
+      max-wait: 30000
+      max-idle: 100
+      min-idle: 10
+      initial-size: 10
+      validation-query: select 1
+
+
+#����mybatis  classpath:resources/Mapper.*.xml +
+#mybatis:
+#  type-aliases-package: com.example.demo.entity
+#  mapper-locations: resources/Mapper/*.xml
+
+
+
