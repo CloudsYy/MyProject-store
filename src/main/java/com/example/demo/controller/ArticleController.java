@@ -1,19 +1,13 @@
 package com.example.demo.controller;
 
-import com.auth0.jwt.interfaces.Claim;
 import com.example.demo.Service.SService;
 import com.example.demo.entity.ItemEntity;
-import com.example.demo.entity.UserEntity;
-import com.example.demo.util.JWTUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
