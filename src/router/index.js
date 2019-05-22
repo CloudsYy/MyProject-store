@@ -8,7 +8,13 @@ import Login from '@/components/login'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
+  base: '/vue-test/',
   routes: [
+     {
+      path: '*',
+      component: (resolve) => require(['../components/error404.vue'], resolve)
+     },
     {
       path: '/',
       name: 'HelloWorld',

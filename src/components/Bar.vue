@@ -1,16 +1,16 @@
 <template>
   <div id="bar">
-    <p style="margin-left: -1080px">当前用户：admin</p>
-    <el-collapse accordion style="margin-left: 312px; width: 1200px">
+    <p style="margin-left: -1080px">当前用户：admin</p><!--margin-left: 312px; width: 1200px-->
+    <el-collapse accordion style="margin-left:70px; ">
     <el-collapse-item>
       <template slot="title">
         <h2>信息查询<i class="header-icon el-icon-info"></i></h2>
       </template>
       <el-row style="margin-left: -400px">
-        <el-select class="item-choose" :placeholder="请选择" v-model="value" size="middle" style="margin: auto;width: 300px; margin-left: -30px">
+        <el-select class="item-choose" :placeholder="请选择" v-model="value" size="middle" style="margin: auto;width: 300px; margin-left: -90px">
         <el-option
-          v-for="(item,index) in options"
-          :key="index"
+          v-for="item in options"
+          :key="item.value"
           :label="item.label"
           :value="item.value"
         ></el-option>
@@ -126,7 +126,8 @@
         currentPage: 1,
         pageSize: 5,
         pageTotal: 0,
-        token: []
+        token: [],
+        value:[]
       }
     },
     mounted() {
