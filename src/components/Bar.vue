@@ -13,7 +13,7 @@
           :key="item.value"
           :label="item.label"
           :value="item.value"
-        ></el-option>
+        ></el-option>·
       </el-select>
         <!--<el-input v-model="input" placeholder="请输入内容" style="margin: auto;width: 400px"></el-input>-->
         <el-button type="primary" icon="el-icon-search" style="margin-left: 12px">搜索</el-button>
@@ -134,12 +134,22 @@
       this.getDataList();
       VueEvent.$on("to-header",function (data) {
         console.log(data)
-      })
+      });
+      /*setInterval(()=>{
+          this.$http.get(`/api/article/validateToken/${this.token}`, {
+            emulateJSON: true
+          }).then(function (response) {
+             console()
+          },function (response) {
+            // 这里是处理错误的回调
+            console.log(response)
+          })
+      },60000)*/
       },
     methods: {
       getDataList() {
         this.dataListLoading = true
-        this.token = localStorage.getItem("list");
+        this.token = localStorage.getItem("token");
         this.$http.get('/api/article/get', {
           emulateJSON: true
         }).then(function (response) {

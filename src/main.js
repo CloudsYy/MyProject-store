@@ -13,12 +13,14 @@ import router from './router'
 //引入resource
 import VueResource from 'vue-resource';
 import 'element-ui/lib/theme-chalk/index.css';
+import Vuex from 'vuex';
 
 //引入jQuery
 import $ from 'jquery'
 
 Vue.use(VueResource);
 Vue.use(ElementUi);
+Vue.use(Vuex);
 //Vue.use(Axios);
 
 Vue.config.productionTip = false
@@ -27,5 +29,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  Vuex,
   render: h => h(App)
 })

@@ -50,7 +50,7 @@
               this.dataForm.username='',
               this.dataForm.password=''
             } else{
-              localStorage.setItem('list',JSON.stringify(response.data.token))
+              localStorage.setItem('token',JSON.stringify(response.data.token))
               VueEvent.$emit('to-header',this.dataForm.username)
               this.$router.push({name: 'Bar',params:{list:response.data}})
             }
