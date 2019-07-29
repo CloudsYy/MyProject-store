@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    #div1{
+      width: 150px;
+      height: 200px;
+      background: red;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+    body{
+      height: 2000px;
+    }
+  </style>
+  <script>
+     window.onscroll = function () {
+       var oDiv = document.getElementById('div1');
+       var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+       startMove(document.documentElement.clientHeight - oDiv.offsetHeight + scrollTop);//？？为什么这么算
+     };
+     var timer = null;
+
+     function startMove(iTarget) {
+       var oDiv = document.getElementById('div1');
+       clearInterval(timer);
+       timer = setInterval(function () {
+         var speed =  (iTarget - oDiv.offsetTop)/8;//??为什么减掉offsetTop
+         //console.log(oDiv.style.top)
+         speed = speed>0?Math.ceil(speed):Math.floor(speed);//div1永远会回到屏幕的最底部oDiv.top = clientHeight - oDiv.offsetTop
+         if (oDiv.offsetTop == iTarget){
+           console.log(oDiv.offsetTop);
+           clearInterval(timer);
+         }else{
+           oDiv.style.top = oDiv.offsetTop + speed + 'px';
+           //console.log(oDiv.style.top)
+         }
+       },30);
+     }
+  </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

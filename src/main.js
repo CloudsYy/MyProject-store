@@ -6,6 +6,7 @@ import Foo from './components/Foo'
 import Bar from './components/Bar'
 import login from './components/login'
 import ElementUi from 'element-ui'
+import store from './store/store.js'
 
 import router from './router'
 //import Axios from 'axios';
@@ -26,10 +27,11 @@ Vue.use(Vuex);
 Vue.config.productionTip = false
 
 Vue.http.interceptors.push((request,next)=>{
-  console.log(this)//此处this.为请求所在页面的Vue实例
+  //console.log(this)//此处this.为请求所在页面的Vue实例
   //modify request
   //request.method = 'POST';//在请求之前可以进行一些预处理和配置
   let token = localStorage.getItem('token');
+  console.log(token+"   interceptors");
   if (token){
     request.headers.set('token',token);
   }
@@ -37,7 +39,7 @@ Vue.http.interceptors.push((request,next)=>{
   next((response)=>{
     //在响应之后传给then之前对respond进行修改和逻辑判断，对于token时候已过期
     //的判断，就添加在此处，页面中任何一次http请求都会先调用此处方法
-    console.log(request.headers.get('token')+ 1);
+    console.log(request.headers.get('token'));
     return response;
   });
 });
@@ -46,6 +48,6 @@ Vue.http.interceptors.push((request,next)=>{
 new Vue({
   el: '#app',
   router,
-  Vuex,
+  store,
   render: h => h(App)
 })

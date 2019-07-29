@@ -8,9 +8,9 @@ import Login from '@/components/login'
 Vue.use(Router)
 
 //页面刷新时，重新赋值token
-if (localStorage.getItem('token')) {
+/*if (localStorage.getItem('token')) {
   this.$store.commit('set_token',localStorage.getItem('token'));
-}
+}*/
 
 const router = new Router({
   mode: 'history',
@@ -43,20 +43,20 @@ const router = new Router({
   ]
 });
 
-export default router;
 
 router.beforeEach((to,from,next)=>{
   if (to.path === '/login'){
     next();
   } else{
     let token  = localStorage.getItem('token');
-
     if (token === 'null' || token === ''){
       next('/login');
-    } else
-    {
+      console.log("null");
+    } else {
+      console.log("not null");
       next();
     }
   }
 });
 
+export default router;

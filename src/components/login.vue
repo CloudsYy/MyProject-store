@@ -17,6 +17,7 @@
 <script>
   //引入vue实例
   import VueEvent from  '../model/VueEvent.js';
+  //import store from  '../store/store.js';
 
     export default {
       data(){
@@ -50,7 +51,7 @@
               this.dataForm.username='',
               this.dataForm.password=''
             } else{
-              this.$store.commit('set_token',response.data.token);
+              this.$store.commit('set_token',response.data.token)
               VueEvent.$emit('to-header',this.dataForm.username)
               this.$router.push({name: 'Bar',params:{list:response.data}})
             }
