@@ -28,7 +28,9 @@ public class TController {
     @Autowired
     private UService uService;
 
-    private String token;
+    private String access_token;
+
+    private String refresh_token;
 
     @GetMapping("/user/login/{username},{password}")
     public Map validUser(@PathVariable String username, @PathVariable String password) throws Exception{
@@ -39,11 +41,11 @@ public class TController {
             return null;
         }
 
-        token = JWTUtils.createToken();
+        access_token = JWTUtils.createToken();
 
         Map<String, Object> map = new HashMap<>();
 
-        map.put("token",token);
+        map.put("token",access_token);
         map.put("List",List);
         //map.put("UserList",UserList);
 

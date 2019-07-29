@@ -8,10 +8,11 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+
+import javax.xml.crypto.Data;
+import java.sql.Time;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class JWTUtils {
 
@@ -69,6 +70,7 @@ public class JWTUtils {
             jwt = verifier.verify(token);
         }catch (Exception e){
             throw new RuntimeException("登录凭证已过期，请重新登录！");
+            //throw new RuntimeException("401");
         }
 
       return jwt.getClaims();
@@ -94,6 +96,16 @@ public class JWTUtils {
         Map<String,Claim> claimExpire = JWTUtils.verifyToken(tokenExpire);
 
 
+    }*/
+
+    /*public static void main(String[] args)throws Exception{
+        String token =  JWTUtils.createToken();
+
+        //Thread.currentThread().sleep(61000);
+
+        Map<String,Claim> claims = JWTUtils.verifyToken(token);
+
+        System.out.println("验证完成！");
     }*/
 
     /**

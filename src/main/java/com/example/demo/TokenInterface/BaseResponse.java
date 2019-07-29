@@ -3,9 +3,9 @@ package com.example.demo.TokenInterface;
 /**
  * API接口的基础返回类
  *
- * @author XiongNeng
+ * @author Cloud
  * @version 1.0
- * @since 2018/1/7
+ * @since 2019/1/7
  */
 public class BaseResponse<T> {
     /**
