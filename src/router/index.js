@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Foo from '@/components/Foo'
 import Bar from '@/components/Bar'
 import Login from '@/components/login'
+import error404 from "@/components/error404";
 
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ const router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/error404',
+      name: 'error404',
+      component: error404
     }
   ]
 });
