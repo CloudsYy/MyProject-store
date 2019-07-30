@@ -16,11 +16,12 @@ public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("token");
 
-        /*Map<String,Claim> claimMap = JWTUtils.verifyToken(token);
+        Map<String,Claim> claimMap = JWTUtils.verifyToken(token);
 
-        System.out.println(claimMap);*/
+        System.out.println(claimMap);
 
-        System.out.println("只是测试一下而已");
+        System.out.println("验证token");
+
         return true;
     }
 
