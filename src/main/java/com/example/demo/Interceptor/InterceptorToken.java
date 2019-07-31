@@ -19,6 +19,6 @@ public class InterceptorToken implements WebMvcConfigurer {
 
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(this.getMyInterceptor())
-        .addPathPatterns("/**");
+        .addPathPatterns("/article/get");
     }
 }

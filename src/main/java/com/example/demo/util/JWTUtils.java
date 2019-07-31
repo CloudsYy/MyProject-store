@@ -8,6 +8,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.xml.crypto.Data;
 import java.sql.Time;
@@ -35,7 +36,7 @@ public class JWTUtils {
 
         //过期时间 -1分钟过期
         Calendar nowTime = Calendar.getInstance();
-        nowTime.add(Calendar.MINUTE,1);
+        nowTime.add(Calendar.MINUTE,2);
         Date expiresDate = nowTime.getTime();
 
         Map<String,Object> map = new HashMap<String, Object>();
@@ -69,8 +70,9 @@ public class JWTUtils {
         try{
             jwt = verifier.verify(token);
         }catch (Exception e){
-            throw new RuntimeException("登录凭证已过期，请重新登录！");
+            //throw new RuntimeException("登录凭证已过期，请重新登录！");
             //throw new RuntimeException("401");
+
         }
 
       return jwt.getClaims();
