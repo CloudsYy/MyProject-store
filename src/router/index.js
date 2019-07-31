@@ -34,7 +34,10 @@ const router = new Router({
     {
       path: '/bar',
       name: 'Bar',
-      component: Bar
+      component: Bar,
+      meta:{
+        requireAuth: true
+      }
     },
     {
       path: '/login',
@@ -51,11 +54,14 @@ const router = new Router({
 
 
 router.beforeEach((to,from,next)=>{
-  if (to.path === '/login'){
+
+  if (to.path === '/login' && to.path === '/') {
+    localStorage.removeItem('token');//不要之前的token
     next();
-  } else{
-    let token  = localStorage.getItem('token');
-    if (token === 'null' || token === ''){
+  } else {
+    let token = localStorage.getItem('token');
+    console.log(token + "    beforeEach")
+    if (token === null || token === '') {//token ==="null"则表示token等于字符串null ，而token===null，则表示为null的空值
       next('/login');
       console.log("null");
     } else {
@@ -63,6 +69,7 @@ router.beforeEach((to,from,next)=>{
       next();
     }
   }
+
 });
 
 export default router;
